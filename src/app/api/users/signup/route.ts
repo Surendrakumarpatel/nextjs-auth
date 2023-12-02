@@ -3,13 +3,12 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
 
-
 connect();
 
 export async function POST(req: NextRequest) {
     try {
         const reqBody = await req.json();
-        console.log(reqBody);
+        console.log("Our Body: ",reqBody);
         const { username, email, password } = reqBody;
         // validation
         if (!username || !email || !password) {
@@ -20,19 +19,17 @@ export async function POST(req: NextRequest) {
         if (user) {
             return NextResponse.json({ message: "User already exist!" }, { status: 400 })
         }
-        const hashedPassword = await bcryptjs.hash(password, 10);
-        const newUser = new User({
+        const salt = await bcryptjs.genSalt(10);
+        const hashedPassword = await bcryptjs.hash(password, salt);
+        await User.create({
             username,
             email,
             password: hashedPassword
-        })
-        const savedUser = await newUser.save();
-
+        }) 
         return NextResponse.json({
             message: "Account created successfully!",
-            success: true,
-            savedUser
-        })
+            success: true, 
+        },{status:200})
 
     } catch (error: any) {
         console.log(error);
