@@ -1,24 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Day-01
+- Why Next Js more powerful than React Js?
+- Code Splitting
+- SSR, CSR
 
-## Getting Started
+## Day-02
+- build Login/Signup Page
+- react-icons and react-hot-toast 
+- convert any page as a client side rendering ("use client")
+- connected server to the mongoDB database
+- created user model
+- jwt(generate token), cookies(set cookie client side)
+- bcryptjs (bcrypt password)
+- created api to login and signup user
+- backend logic completed for login & signup
+- push the code on github 
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Day-03
+- protect our routes (middleware taken care)
+- how middleware works in Next Js ?
+- logout router
+- 
 
 ## Learn More
 

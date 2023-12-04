@@ -22,8 +22,8 @@ export default function LoginPage() {
             try {
                 śetLoading(true);
                 const res = await axios.post("/api/users/login", user);
-                toast.success(res.data.message);
                 router.push("/profile");
+                toast.success(res.data.message);
             } catch (error:any) {
                 toast.error(error.message);
             }finally{
@@ -59,7 +59,7 @@ export default function LoginPage() {
                         onChange={(e) => setUser({ ...user, password: e.target.value })}
                         className="border-2 border-gray-500 outline-none rounded-md px-2 py-1" />
                 </div>
-                <button onClick={onSubmit} className={`${disabled ? "bg-[#e3e3e3] cursor-not-allowed" : "bg-[#ff698f]"} w-full text-white font-medium rounded-md py-1 my-2`}>SIGNUP</button>
+                <button onClick={onSubmit} className={`${disabled ? "bg-[#e3e3e3] cursor-not-allowed" : "bg-[#ff698f]"} w-full text-white font-medium rounded-md py-1 my-2`}>LOGIN</button>
                 <p className="text-center">OR</p>
                 <div className="flex my-3 mx-auto w-[50%] items-center justify-between">
                     <FaGoogle className="cursor-pointer" size="24px" color="#c1121f" />

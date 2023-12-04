@@ -10,7 +10,6 @@ connect();
 export async function POST(req: NextRequest) {
     try {
         const reqBody = await req.json();
-        console.log(reqBody);
         const { email, password } = reqBody;
         const user = await User.findOne({ email });
         if (!user)
@@ -20,7 +19,11 @@ export async function POST(req: NextRequest) {
         if (!isPasswordMatch)
             return NextResponse.json({ message: "Invalid password" }, { status: 400 });
 
-        const tokenData = { id: user._id };
+        const tokenData = { 
+            id: user._id,
+            username:user.username,
+            email:user.email
+         };
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, { expiresIn: "1d" });
 
 
