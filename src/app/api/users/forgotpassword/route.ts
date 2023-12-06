@@ -11,17 +11,16 @@ export async function POST(req: NextRequest) {
         const reqBody = await req.json();
         const { token, user: { newPassword }, user: { confirmPassword } } = reqBody;
         if (newPassword !== confirmPassword) {
-            return NextResponse.json({ message: "password didn't match" }, { status: 200 });
+            return NextResponse.json({ message: "password didn't match" }, { status: 400 });
         }
-        const data = { token, newPassword, confirmPassword };
-       
+        
         let user = await User.findOne({
             forgotPasswordToken: token,
             forgotPasswordTokenExpiry: { $gt: Date.now() }
         });
        
         if (!user) {
-            return NextResponse.json({ message: "User not found!" }, { status: 200 });
+            return NextResponse.json({ message: "User not found!" }, { status: 400 });
         }
         const genSalt = await bcrypt.genSalt(10);
         const hasedPassword = await bcrypt.hash(newPassword, genSalt);

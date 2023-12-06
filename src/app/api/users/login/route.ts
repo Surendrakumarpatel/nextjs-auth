@@ -13,11 +13,11 @@ export async function POST(req: NextRequest) {
         const { email, password } = reqBody;
         const user = await User.findOne({ email });
         if (!user)
-            return NextResponse.json({ message: "User doesn't exist!" }, { status: 200 });
+            return NextResponse.json({ message: "User doesn't exist!" }, { status: 400 });
 
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (!isPasswordMatch)
-            return NextResponse.json({ message: "Invalid email or password" }, { status: 200 });
+            return NextResponse.json({ message: "Invalid email or password" }, { status: 400 });
 
         const tokenData = { 
             id: user._id,

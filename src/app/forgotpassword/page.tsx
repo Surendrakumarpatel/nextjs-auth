@@ -22,7 +22,7 @@ export default function ForgotPassword() {
             toast.success(res.data.message); 
             router.push("/login");
         } catch (error: any) {
-            toast.error(error.message);
+            toast.error(error.response.data.message);
         } finally {
             śetLoading(false);
         }

@@ -26,7 +26,7 @@ export default function LoginPage() {
                 router.push("/profile");
                 toast.success(res.data.message);
             } catch (error: any) {
-                toast.error(error.message);
+                toast.error(error.response.data.message);
             } finally {
                 śetLoading(false);
             }

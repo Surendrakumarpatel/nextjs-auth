@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
             }
         )
         if(!user){
-            return NextResponse.json({message:"User not found"}, {status:200});
+            return NextResponse.json({message:"User not found"}, {status:400});
         }
         user.isVerified = true;
         user.verifyToken = undefined;

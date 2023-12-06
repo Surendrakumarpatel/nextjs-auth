@@ -13,7 +13,7 @@ export default function UserProfile() {
             router.push("/login");
             toast.success(res.data.message);
         } catch (error:any) {
-            toast.error(error.message);
+            toast.error(error.response.data.message);
         }
     }
     useEffect(()=>{
