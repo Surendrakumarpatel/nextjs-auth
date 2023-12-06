@@ -14,14 +14,12 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ message: "password didn't match" }, { status: 200 });
         }
         const data = { token, newPassword, confirmPassword };
-        console.log(data);
-        
+       
         let user = await User.findOne({
             forgotPasswordToken: token,
             forgotPasswordTokenExpiry: { $gt: Date.now() }
         });
-        console.log(user);
-        
+       
         if (!user) {
             return NextResponse.json({ message: "User not found!" }, { status: 200 });
         }

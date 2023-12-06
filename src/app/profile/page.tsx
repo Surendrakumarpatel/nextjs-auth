@@ -20,7 +20,6 @@ export default function UserProfile() {
         const getMyProfile = async () =>{
             try {
                 const res = await axios.get("/api/users/me");
-                console.log(res.data);
                 setUser(res.data.user);
             } catch (error:any) {
                 console.log(error.message);

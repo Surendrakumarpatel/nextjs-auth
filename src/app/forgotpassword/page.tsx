@@ -22,7 +22,6 @@ export default function ForgotPassword() {
             toast.success(res.data.message); 
             router.push("/login");
         } catch (error: any) {
-            console.log(error);
             toast.error(error.message);
         } finally {
             śetLoading(false);
