@@ -5,7 +5,6 @@ connect();
 export async function POST(req: NextRequest) {
     try {
         const reqBody = await req.json();
-        console.log(reqBody);
         const { token } = reqBody;
         const user = await User.findOne(
             {
@@ -14,7 +13,7 @@ export async function POST(req: NextRequest) {
             }
         )
         if(!user){
-            return NextResponse.json({message:"User not found"}, {status:400});
+            return NextResponse.json({message:"User not found"}, {status:200});
         }
         user.isVerified = true;
         user.verifyToken = undefined;
@@ -22,7 +21,7 @@ export async function POST(req: NextRequest) {
         await user.save();
 
         return NextResponse.json({
-            message:"Email verify successfull",
+            message:"Email verified successfull",
             success:true
         })
 
