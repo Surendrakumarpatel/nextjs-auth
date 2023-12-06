@@ -71,7 +71,7 @@ export default function LoginPage() {
                     <FaFacebook className="cursor-pointer" size="24px" color="#669bbc" />
                     <FaLinkedin className="cursor-pointer" size="24px" color="#3a86ff" />
                 </div>
-                <p>Don't have account? <Link href="/signup" className="font-bold">SIGNUP</Link></p>
+                <p>Do not have account? <Link href="/signup" className="font-bold">SIGNUP</Link></p>
             </div>
         </div>
     )
