@@ -5,7 +5,6 @@ import toast from "react-hot-toast";
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { sendEmail } from "@/helpers/mailer";
 
 export default function LoginPage() {
     const router = useRouter();
@@ -23,7 +22,7 @@ export default function LoginPage() {
             try {
                 śetLoading(true);
                 const res = await axios.post("/api/users/login", user);
-                router.push("/profile");
+                router.push("/");
                 toast.success(res.data.message);
             } catch (error: any) {
                 toast.error(error.response.data.message);

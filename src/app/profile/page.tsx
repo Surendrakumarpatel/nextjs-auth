@@ -7,22 +7,16 @@ import { useEffect, useState } from "react";
 export default function UserProfile() { 
     const [user, setUser] = useState<any>(null);
     const router = useRouter();
-    const logoutHandler = async () => {
-        try {
-            const res = await axios.get("/api/users/logout");
-            router.push("/login");
-            toast.success(res.data.message);
-        } catch (error:any) {
-            toast.error(error.response.data.message);
-        }
-    }
+    
     useEffect(()=>{
         const getMyProfile = async () =>{
             try {
                 const res = await axios.get("/api/users/me");
+                console.log(res); 
                 setUser(res.data.user);
             } catch (error:any) {
-                console.log(error.message);
+                console.log(error);
+                toast.error(error.response.data.message);
             }
         }
         getMyProfile();
@@ -33,7 +27,6 @@ export default function UserProfile() {
             <h1>Normal Profile Page</h1> 
             <p>Email: <span className="font-bold ml-2">{user && user.email}</span></p>
             <p>Username: <span className="font-bold ml-2">{user && user.username}</span></p>
-            <button onClick={logoutHandler}>Logout</button>
         </div>
     )
 }
