@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function UserProfile() { 
     const [user, setUser] = useState<any>(null);
-    const router = useRouter();
-    
+  
     useEffect(()=>{
         const getMyProfile = async () =>{
             try {

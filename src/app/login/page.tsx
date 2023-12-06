@@ -23,6 +23,7 @@ export default function LoginPage() {
                 śetLoading(true);
                 const res = await axios.post("/api/users/login", user);
                 router.push("/");
+                router.refresh();
                 toast.success(res.data.message);
             } catch (error: any) {
                 toast.error(error.response.data.message);

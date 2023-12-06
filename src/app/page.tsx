@@ -11,6 +11,7 @@ export default function Home() {
     try {
       const res = await axios.get("/api/users/logout");
       router.push("/login");
+      router.refresh();
       toast.success(res.data.message);
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -18,6 +19,7 @@ export default function Home() {
   }
   const getProfile = () => {
     router.push("/profile");
+    router.refresh();
   }
 
   return (
